@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    1.编写一个正则表达式，匹配一个格式正确的IPv4地址。
+    <script>
+        // [0-9]                    \d
+        // [1-9][0-9]               [1-9]\d
+        // [1][0-9][0-9]            1\d{2}
+        // [2][0-4][0-9]            2[0-4]\d
+        // [2][5][0-5]              25[0-5]
+        let reg = /^([0-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.([0-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.([0-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])\.([0-9]|[1-9][0-9]|[1][0-9][0-9]|[2][0-4][0-9]|[2][5][0-5])$/
+        let regex = /^((\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])\.){3}(\d|[1-9]\d|1\d{2}|2[0-4]\d|25[0-5])$/
+        console.log(reg.test("255.1.1.1")); // true 
+        console.log(reg.test("192.168.68.178")); // true
+        console.log(reg.test("255.255.255.256")); // false
+        console.log(reg.test('192.168.68.178'));//true
+        console.log(reg.test('2.21.456.12'));//false
+        console.log('===================================================');
+        console.log(regex.test("255.1.1.1")); // true 
+        console.log(regex.test("192.168.68.178")); // true
+        console.log(regex.test("255.255.255.256")); // false
+        console.log(regex.test('192.168.68.178'));//true
+        console.log(regex.test('2.21.456.12'));//false
+    </script>
+</body>
+
+</html>

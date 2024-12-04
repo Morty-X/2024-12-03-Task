@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    4.编写一个正则表达式，验证一个密码是否符合要求
+    （8-14个字符，由大写字母、小写字母和数字组成，至少包含其中两种）。
+    <script>
+        // ^表示字符串的开始位置
+        // $ 表示字符串的结束位置
+
+
+        // 大写字母+小写字母
+        // 大写字母+数字
+        // 小写字母+数字
+
+        let regex = /^((?=.*[A-Z])(?=.*[a-z])[A-Za-z\d]{8,14}|(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,14}|(?=.*[a-z])(?=.*\d)[A-Za-z\d]{8,14})$/
+
+        console.log(regex.test('1234567890'));//false
+        console.log(regex.test('ertyuio'));//false
+        console.log(regex.test('WSEDRFGTYHUJK'));//false
+        console.log(regex.test('ghjk9876'));//true
+        console.log(regex.test('RFTGYHUJ9876'));//true
+        console.log(regex.test('ghjkDRTY'));//true
+
+
+        // 至少包含其中两种===不能只存在一种
+        // newRegex正则表达式存在问题需要后面修改
+        let newRegex = /^(?![A-Z])[A-Za-z\d]{8,14}|(?![a-z])[A-Za-z\d]{8,14}|(?!\d)[A-Za-z\d]{8,14}$/
+        console.log(newRegex.test('1234567890'));//false
+        console.log(newRegex.test('ertyuio'));//false
+        console.log(newRegex.test('WSEDRFGTYHUJK'));//false
+        console.log(newRegex.test('ghjk9876'));//true
+        console.log(newRegex.test('RFTGYHUJ9876'));//true
+        console.log(newRegex.test('ghjkDRTY'));//true 
+
+
+    </script>
+</body>
+
+</html>

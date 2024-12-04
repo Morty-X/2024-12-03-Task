@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    3.编写一个正则表达式，验证一个密码是否符合要求
+    （至少8个字符，包含至少一个大写字母、一个小写字母和一个数字）。
+    <script>
+        // 先行断言 ^只有在?=后面的内容的前面才匹配
+        let reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[\da-zA-Z]{8,}$/
+        console.log(reg.test('123456789'));//false
+        console.log(reg.test('Ajsij281'));//true
+        console.log(reg.test('ooooooooo'));//false
+        console.log(reg.test('ASDFGHJKL'));//false
+        // 判断一个字符串中是否有大写字母A
+        // 开头后面跟上若干个字符 有A
+        // * 星号表示某个模式出现0次或多次，等同于{ 0, }。
+        // 点字符（.）匹配除回车（\r）、换行(\n) 、行分隔符（\u2028）和段分隔符（\u2029）以外的所有字符。
+        let reg1 = /^.{0,}A/
+        // 确定某字符是否存在与字符串中
+        let str = 'abshdjA'
+        // 例如确定 'A' 是否存在于str中
+        // 即从 A 开始找若干个位置能够找到队首前的位置，或者说从str的开头走多少步能够找到
+        // A的位置，若最后能够抵达A的位置，则证明A在str里面
+
+        // /^(?=.*A)/  从开头找，走任意步是否可以抵达A？若能，则存在
+
+    </script>
+</body>
+
+</html>
